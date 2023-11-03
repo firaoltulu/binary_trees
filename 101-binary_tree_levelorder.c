@@ -6,23 +6,23 @@
  */
 size_t function_one(const binary_tree_t *tree)
 {
-    if (tree)
-    {
-        int one = 0, two = 0;
+	if (tree)
+	{
+		int one = 0, two = 0;
 
-        if (tree->right)
-            two = 1 + function_one(tree->right);
-        if (tree->left)
-            one = 1 + function_one(tree->left);
-        if (one > two)
-            return (one);
-        else
-            return (two);
-    }
-    else
-    {
-        return (0);
-    }
+		if (tree->right)
+			two = 1 + function_one(tree->right);
+		if (tree->left)
+			one = 1 + function_one(tree->left);
+		if (one > two)
+			return (one);
+		else
+			return (two);
+	}
+	else
+	{
+		return (0);
+	}
 }
 /**
  * function_two - This Funcion print node, especific level.
@@ -33,16 +33,16 @@ size_t function_one(const binary_tree_t *tree)
  */
 void function_two(const binary_tree_t *tree, void (*func)(int), int level)
 {
-    if (tree && func)
-    {
-        if (level == 1)
-            func(tree->n);
-        else
-        {
-            function_two(tree->left, func, level - 1);
-            function_two(tree->right, func, level - 1);
-        }
-    }
+	if (tree && func)
+	{
+		if (level == 1)
+			func(tree->n);
+		else
+		{
+			function_two(tree->left, func, level - 1);
+			function_two(tree->right, func, level - 1);
+		}
+	}
 }
 
 /**
@@ -52,15 +52,15 @@ void function_two(const binary_tree_t *tree, void (*func)(int), int level)
  */
 void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int))
 {
-    size_t one = 0, two = 1;
+	size_t one = 0, two = 1;
 
-    if (tree && func)
-    {
-        one = function_one(tree);
-        while (two <= one + 1)
-        {
-            function_two(tree, func, two);
-            two++;
-        }
-    }
+	if (tree && func)
+	{
+		one = function_one(tree);
+		while (two <= one + 1)
+		{
+			function_two(tree, func, two);
+			two++;
+		}
+	}
 }

@@ -9,20 +9,20 @@
 
 bst_t *array_to_bst(int *array, size_t size)
 {
-    bst_t *one;
-    size_t two;
+	bst_t *one;
+	size_t two;
 
-    if (array == NULL)
-    {
-        return (NULL);
-    }
-    else
-    {
-        one = NULL;
-        for (two = 0; two < size; two++)
-        {
-            bst_insert(&one, array[two]);
-        }
-        return (one);
-    }
+	if (array == NULL)
+	{
+		return (NULL);
+	}
+	else
+	{
+		one = NULL;
+		for (two = 0; two < size; two++)
+		{
+			bst_insert(&one, array[two]);
+		}
+		return (one);
+	}
 }

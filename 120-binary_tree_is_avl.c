@@ -14,17 +14,17 @@ int binary_tree_is_avl(const binary_tree_t *tree);
  */
 size_t function_one(const binary_tree_t *tree)
 {
-    if (tree)
-    {
-        size_t one = 0, two = 0;
-        one = tree->left ? 1 + function_one(tree->left) : 1;
-        two = tree->right ? 1 + function_one(tree->right) : 1;
-        return ((one > two) ? one : two);
-    }
-    else
-    {
-        return (0);
-    }
+	if (tree)
+	{
+		size_t one = 0, two = 0;
+		one = tree->left ? 1 + function_one(tree->left) : 1;
+		two = tree->right ? 1 + function_one(tree->right) : 1;
+		return ((one > two) ? one : two);
+	}
+	else
+	{
+		return (0);
+	}
 }
 
 /**
@@ -37,31 +37,31 @@ size_t function_one(const binary_tree_t *tree)
  */
 int function_two(const binary_tree_t *tree, int lo, int hi)
 {
-    size_t one, two, three;
+	size_t one, two, three;
 
-    if (tree != NULL)
-    {
-        if (tree->n < lo || tree->n > hi)
-        {
-            return (0);
-        }
-        else
-        {
-            one = function_one(tree->left);
-            two = function_one(tree->right);
-            three = one > two ? one - two : two - one;
-            if (three > 1)
-            {
-                return (0);
-            }
-            else
-            {
-                return (function_two(tree->left, lo, tree->n - 1) &&
-                        function_two(tree->right, tree->n + 1, hi));
-            }
-        }
-    }
-    return (1);
+	if (tree != NULL)
+	{
+		if (tree->n < lo || tree->n > hi)
+		{
+			return (0);
+		}
+		else
+		{
+			one = function_one(tree->left);
+			two = function_one(tree->right);
+			three = one > two ? one - two : two - one;
+			if (three > 1)
+			{
+				return (0);
+			}
+			else
+			{
+				return (function_two(tree->left, lo, tree->n - 1) &&
+						function_two(tree->right, tree->n + 1, hi));
+			}
+		}
+	}
+	return (1);
 }
 
 /**
@@ -72,12 +72,12 @@ int function_two(const binary_tree_t *tree, int lo, int hi)
  */
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
-    if (tree == NULL)
-    {
-        return (0);
-    }
-    else
-    {
-        return (function_two(tree, INT_MIN, INT_MAX));
-    }
+	if (tree == NULL)
+	{
+		return (0);
+	}
+	else
+	{
+		return (function_two(tree, INT_MIN, INT_MAX));
+	}
 }

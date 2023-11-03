@@ -13,9 +13,9 @@ bst_t *bst_remove(bst_t *root, int value);
  */
 bst_t *function_one(bst_t *root)
 {
-    while (root->left != NULL)
-        root = root->left;
-    return (root);
+	while (root->left != NULL)
+		root = root->left;
+	return (root);
 }
 
 /**
@@ -27,35 +27,35 @@ bst_t *function_one(bst_t *root)
  */
 bst_t *function_two(bst_t *root, bst_t *node)
 {
-    bst_t *one = node->parent, *two = NULL;
+	bst_t *one = node->parent, *two = NULL;
 
-    if (node->left == NULL)
-    {
-        if (one != NULL && one->left == node)
-            one->left = node->right;
-        else if (one != NULL)
-            one->right = node->right;
-        if (node->right != NULL)
-            node->right->parent = one;
-        return (one == NULL ? node->right : root);
-        free(node);
-    }
-    if (node->right == NULL)
-    {
-        if (one != NULL && one->left == node)
-            one->left = node->left;
-        else if (one != NULL)
-            one->right = node->left;
-        if (node->left != NULL)
-            node->left->parent = one;
-        return (one == NULL ? node->left : root);
-        free(node);
-    }
+	if (node->left == NULL)
+	{
+		if (one != NULL && one->left == node)
+			one->left = node->right;
+		else if (one != NULL)
+			one->right = node->right;
+		if (node->right != NULL)
+			node->right->parent = one;
+		return (one == NULL ? node->right : root);
+		free(node);
+	}
+	if (node->right == NULL)
+	{
+		if (one != NULL && one->left == node)
+			one->left = node->left;
+		else if (one != NULL)
+			one->right = node->left;
+		if (node->left != NULL)
+			node->left->parent = one;
+		return (one == NULL ? node->left : root);
+		free(node);
+	}
 
-    two = function_one(node->right);
-    node->n = two->n;
+	two = function_one(node->right);
+	node->n = two->n;
 
-    return (function_two(root, two));
+	return (function_two(root, two));
 }
 
 /**
@@ -68,19 +68,19 @@ bst_t *function_two(bst_t *root, bst_t *node)
  */
 bst_t *function_three(bst_t *root, bst_t *node, int value)
 {
-    if (node != NULL)
-    {
-        if (node->n == value)
-        {
-            return (function_two(root, node));
-        }
-        if (node->n > value)
-        {
-            return (function_three(root, node->left, value));
-        }
-        return (function_three(root, node->right, value));
-    }
-    return (NULL);
+	if (node != NULL)
+	{
+		if (node->n == value)
+		{
+			return (function_two(root, node));
+		}
+		if (node->n > value)
+		{
+			return (function_three(root, node->left, value));
+		}
+		return (function_three(root, node->right, value));
+	}
+	return (NULL);
 }
 
 /**
@@ -94,5 +94,5 @@ bst_t *function_three(bst_t *root, bst_t *node, int value)
  */
 bst_t *bst_remove(bst_t *root, int value)
 {
-    return (function_three(root, root, value));
+	return (function_three(root, root, value));
 }

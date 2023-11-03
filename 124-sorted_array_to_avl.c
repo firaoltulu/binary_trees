@@ -13,22 +13,22 @@
  */
 avl_t *function_four(avl_t *parent, int *array, int begin, int last)
 {
-    avl_t *one;
-    binary_tree_t *two;
-    int three = 0;
+	avl_t *one;
+	binary_tree_t *two;
+	int three = 0;
 
-    if (begin <= last)
-    {
-        three = (begin + last) / 2;
-        two = binary_tree_node((binary_tree_t *)parent, array[three]);
-        if (two == NULL)
-            return (NULL);
-        one = (avl_t *)two;
-        one->left = function_four(one, array, begin, three - 1);
-        one->right = function_four(one, array, three + 1, last);
-        return (one);
-    }
-    return (NULL);
+	if (begin <= last)
+	{
+		three = (begin + last) / 2;
+		two = binary_tree_node((binary_tree_t *)parent, array[three]);
+		if (two == NULL)
+			return (NULL);
+		one = (avl_t *)two;
+		one->left = function_four(one, array, begin, three - 1);
+		one->right = function_four(one, array, three + 1, last);
+		return (one);
+	}
+	return (NULL);
 }
 
 /**
@@ -39,12 +39,12 @@ avl_t *function_four(avl_t *parent, int *array, int begin, int last)
  */
 avl_t *sorted_array_to_avl(int *array, size_t size)
 {
-    if (array == NULL || size == 0)
-    {
-        return (NULL);
-    }
-    else
-    {
-        return (function_four(NULL, array, 0, ((int)(size)) - 1));
-    }
+	if (array == NULL || size == 0)
+	{
+		return (NULL);
+	}
+	else
+	{
+		return (function_four(NULL, array, 0, ((int)(size)) - 1));
+	}
 }
